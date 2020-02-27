@@ -12,5 +12,9 @@ public class Task3Check {
         Assert.assertEquals(Integer.valueOf(3), Task3.equationSolution("-2+5"));
         Assert.assertEquals(Integer.valueOf(11), Task3.equationSolution("7--3+1"));
         Assert.assertEquals(Integer.valueOf(-1), Task3.equationSolution("-4+3---2+2"));
+
+        Assert.assertNull(Task3.equationSolution("a+2"));
+        Assert.assertNull(Task3.equationSolution("1+1-"));
+        Assert.assertNull(Task3.equationSolution("9-2+"));
     }
 }

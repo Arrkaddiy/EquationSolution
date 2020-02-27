@@ -1,16 +1,34 @@
 package my.test;
 
 public class Task3 {
-    private static boolean minusSign;
 
     public static Integer equationSolution(String inputString) {
-        Integer result = 0;
-        String[] elements = inputString.replaceAll(" ", "")
+        if (!isOnlyDigits(inputString)) return null;
+        String[] elements = replaseSolution(inputString);
+        if (isLastElementAnCorrect(elements[elements.length - 1])) return null;
+        return equation(elements);
+    }
+
+    private static boolean isOnlyDigits(String solution) {
+        return solution.matches("[\\d+-]+");
+    }
+
+    private static String[] replaseSolution(String solution) {
+        return solution.replaceAll(" ", "")
                 .replaceAll("\\+", ";+;")
                 .replaceAll("-", ";-;")
                 .replaceAll(";;", ";")
                 .split(";");
+    }
 
+    private static boolean isLastElementAnCorrect(String element) {
+        return element.equals("+") || element.equals("-");
+    }
+
+    private static Integer equation(String[] elements) {
+        boolean minusSign = false;
+        Integer result = 0;
+        Integer value;
         for (String element : elements) {
             if (element.isEmpty()) {
                 continue;
@@ -20,7 +38,6 @@ public class Task3 {
             } else if (element.equals("+")) {
                 continue;
             } else {
-                Integer value;
                 try {
                     value = Integer.valueOf(element);
                 } catch (NumberFormatException nfe) {
