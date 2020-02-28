@@ -10,7 +10,7 @@ public class Task3 {
     }
 
     private static boolean isOnlyDigits(String solution) {
-        return solution.matches("[\\d+-]+");
+        return solution.matches("[\\s\\d+-]+");
     }
 
     private static String[] replaseSolution(String solution) {
@@ -26,9 +26,9 @@ public class Task3 {
     }
 
     private static Integer equation(String[] elements) {
-        boolean minusSign = false;
-        Integer result = 0;
         Integer value;
+        Integer result = 0;
+        boolean minusSign = false;
         for (String element : elements) {
             if (element.isEmpty()) {
                 continue;
@@ -41,7 +41,7 @@ public class Task3 {
                 try {
                     value = Integer.valueOf(element);
                 } catch (NumberFormatException nfe) {
-                    System.err.println(nfe.getMessage());
+                    System.err.println("Error parsing String to Integer. " + nfe.getMessage());
                     return null;
                 }
                 if (minusSign) {
