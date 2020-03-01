@@ -4,7 +4,7 @@ public class Task3 {
 
     public static Integer equationSolution(String inputString) {
         if (!isOnlyDigits(inputString)) return null;
-        String[] elements = replaseSolution(inputString);
+        String[] elements = replaceSolution(inputString);
         if (isLastElementAnCorrect(elements[elements.length - 1])) return null;
         return equation(elements);
     }
@@ -13,7 +13,7 @@ public class Task3 {
         return solution.matches("[\\s\\d+-]+");
     }
 
-    private static String[] replaseSolution(String solution) {
+    private static String[] replaceSolution(String solution) {
         return solution.replaceAll(" ", "")
                 .replaceAll("\\+", ";+;")
                 .replaceAll("-", ";-;")
